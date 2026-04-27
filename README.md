@@ -46,30 +46,33 @@ Unlike traditional platforms that serve generic "top-rated" lists, our engine di
 
 ---
 
-## 🗂️ Project Anatomy
-DineMatch-AI/
-│
-├── 📁 Flask/ # Web application core
-│ ├── 📁 static/ # CSS, JavaScript, assets
-│ ├── 📁 templates/ # HTML views
-│ │ ├── index.html # Landing page
-│ │ ├── web.html # Search interface
-│ │ └── result.html # Recommendations dashboard
-│ │
-│ ├── 🐍 app1.py # Flask server (entry point)
-│ ├── 📓 Restaurant_Recommendation_System.ipynb # Training pipeline
-│ ├── 📊 zomato.csv # Raw dataset (3,000+ restaurants)
-│ ├── 🧠 restaurant.pkl # Pre-trained TF-IDF matrix
-│ └── 🧹 restaurant1.csv # Cleaned & processed data
-│
-├── 📁 Dataset/ # Compressed raw data
-│ └── zomato.csv.zip
-│
-├── 📁 Document/ # Project documentation
-│ └── RESTAURANT_RECOMMENDATION_SYSTEM.docx
-│
-├── 📋 requirements.txt # Dependencies
-└── 📖 README.md # You are here
+## 📁 Project Structure
+
+```
+restaurant_recommendation/
+├── Dataset/
+│   └── zomato.csv                          # Zomato Bangalore dataset (download from Kaggle)
+├── Flask/
+│   ├── app1.py                             # Main Flask application
+│   ├── train_model.py                      # Model training script
+│   ├── restaurant.pkl                      # Trained model (generated)
+│   ├── restaurant1.csv                     # Processed data (generated)
+│   ├── templates/
+│   │   ├── index.html                      # Home page
+│   │   ├── web.html                        # Recommendation input page
+│   │   └── result.html                     # Results page
+│   └── static/
+│       ├── css/
+│       │   └── main.css                    # All styles
+│       ├── js/
+│       │   └── main.js                     # Frontend JS
+│       └── images/                         # Static images
+├── Model/
+│   └── Restaurant_Recommendation_System.ipynb   # Jupyter notebook with full analysis
+├── requirements.txt
+└── README.md
+```
+
 ---
 
 ## 🚀 Quick Start Guide
@@ -105,7 +108,7 @@ Backend: Flask, Python
 
 ML: scikit-learn (TF-IDF, Cosine Similarity)
 
-Frontend: Tailwind CSS, JavaScript
+Frontend: HTML,CSS,Tailwind CSS, JavaScript
 
 NLP: NLTK
 📝 License
