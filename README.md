@@ -47,7 +47,7 @@ Unlike traditional platforms that serve generic "top-rated" lists, our engine di
 ---
 
 ## 🗂️ Project Anatomy
-SmartDining-AI/
+DineMatch-AI/
 │
 ├── 📁 Flask/ # Web application core
 │ ├── 📁 static/ # CSS, JavaScript, assets
@@ -70,7 +70,6 @@ SmartDining-AI/
 │
 ├── 📋 requirements.txt # Dependencies
 └── 📖 README.md # You are here
-
 ---
 
 ## 🚀 Quick Start Guide
@@ -85,13 +84,16 @@ pip install -r ../requirements.txt
 ### Step 2: Train the Model
 ```bash
 jupyter notebook Restaurant_Recommendation_System.ipynb
-
+```
 ### Step 3: Run the App
+```bash
 python app1.py
-
+```
 ### Step 4: Open Browser
+```bash
 Go to http://localhost:5000
-
+```
+```bash
 📊 Dataset
 Feature	Description
 Source	Zomato Bangalore restaurants
@@ -108,7 +110,7 @@ Frontend: Tailwind CSS, JavaScript
 NLP: NLTK
 📝 License
 MIT License
-
+```
 👨‍💻 Developer
 Aman Korabu
 
