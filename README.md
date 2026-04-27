@@ -47,7 +47,7 @@ Unlike traditional platforms that serve generic "top-rated" lists, our engine di
 ---
 
 ## 📁 Project Structure
-
+**DineMatch  AI** 
 ```
 restaurant_recommendation/
 ├── Dataset/
@@ -114,8 +114,7 @@ NLP: NLTK
 📝 License
 MIT License
 
-### 👨‍💻 Developer
-### Aman Korabu
+### 👨‍💻 Developer - Aman Korabu
 
 <div align="center">
 ⭐ Star this repo if you find it useful! ⭐
