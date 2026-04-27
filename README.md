@@ -80,7 +80,7 @@ restaurant_recommendation/
 ### Step 1: Clone & Environment
 
 ```bash
-git clone https://github.com/yourusername/SmartDining-AI.git
+git clone https://github.com/AmanKorabu/Restaurant_Recommendation.git
 cd SmartDining-AI/Flask
 pip install -r ../requirements.txt
 ```
