@@ -81,7 +81,7 @@ restaurant_recommendation/
 
 ```bash
 git clone https://github.com/AmanKorabu/Restaurant_Recommendation.git
-cd SmartDining-AI/Flask
+cd Restaurant_Recommendation/Flask
 pip install -r ../requirements.txt
 ```
 ### Step 2: Train the Model
