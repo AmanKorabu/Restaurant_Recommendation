@@ -108,7 +108,7 @@ Backend: Flask, Python
 
 ML: scikit-learn (TF-IDF, Cosine Similarity)
 
-Frontend: HTML,CSS,Tailwind CSS, JavaScript
+Frontend: HTML, CSS, Tailwind CSS, JavaScript
 
 NLP: NLTK
 📝 License
