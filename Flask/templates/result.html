@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - DineMatch  AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Space Grotesk', sans-serif; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scale-in {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-slide-up { animation: slide-up 0.6s ease-out forwards; }
+        .animate-scale-in { animation: scale-in 0.5s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        .gradient-border {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2px;
+            border-radius: 1rem;
+        }
+        
+        /* Table Styling */
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .result-table thead tr {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .result-table th {
+            padding: 1rem 1.5rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #475569;
+            text-align: left;
+        }
+        
+        .result-table td {
+            padding: 1rem 1.5rem;
+            font-size: 0.875rem;
+            color: #1e293b;
+            border-bottom: 1px solid #f1f5f9;
+            background: white;
+        }
+        
+        .result-table tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .result-table tbody tr:hover {
+            background: linear-gradient(90deg, #eef2ff 0%, #ffffff 100%);
+            transform: translateX(4px);
+        }
+        
+        .badge-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: #92400e;
+        }
+        
+        .badge-cost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 text-gray-900 min-h-screen">
+
+    <!-- Floating Decor Elements -->
+    <div class="fixed top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float pointer-events-none"></div>
+    <div class="fixed bottom-20 right-10 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float pointer-events-none" style="animation-delay: -3s;"></div>
+    <div class="fixed top-1/2 left-1/2 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float pointer-events-none" style="animation-delay: -2s;"></div>
+
+    <!-- Animated Grid Pattern -->
+    <div class="fixed inset-0 opacity-5 pointer-events-none" style="background-image: linear-gradient(#4a5568 1px, transparent 1px), linear-gradient(90deg, #4a5568 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="fixed left-0 top-0 h-full w-20 bg-white/90 backdrop-blur-xl border-r border-gray-200 z-50 flex flex-col items-center py-8 gap-8 shadow-xl">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-2xl shadow-lg">
+            🍽️
+        </div>
+        <nav class="flex flex-col gap-6">
+            <a href="/" class="w-10 h-10 rounded-xl text-gray-400 hover:bg-gray-100 hover:text-indigo-600 flex items-center justify-center text-xl transition-all hover:scale-110">
+                🏠
+            </a>
+            <a href="/web" class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl transition-all hover:scale-110">
+                🔍
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-20 min-h-screen relative z-10">
+        
+        <div class="max-w-7xl mx-auto px-8 py-12">
+            
+            <!-- Header Section -->
+            <div class="mb-10 animate-slide-up">
+                <div class="inline-flex items-center gap-3 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm mb-6">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-sm font-semibold text-gray-700">✨ Inference Complete</span>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-3">
+                            <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                                Recommendations
+                            </span>
+                        </h1>
+                        <p class="text-lg text-gray-600">
+                            Based on your taste profile: 
+                            <span class="font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg inline-block mt-2">
+                                "{{ search_term }}"
+                            </span>
+                        </p>
+                    </div>
+                    
+                    <a href="/web" class="group inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-indigo-300 hover:shadow-lg transition-all hover:-translate-y-1">
+                        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        New Search
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Stats Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8 animate-slide-up delay-100">
+                <div class="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-gray-100">
+                    <div class="text-2xl font-bold text-indigo-600">{{ results_count }}</div>
+                    <div class="text-sm text-gray-500 mt-1">Similar Restaurants Found</div>
+                </div>
+                <div class="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-gray-100">
+                    <div class="text-2xl font-bold text-indigo-600">TF-IDF</div>
+                    <div class="text-sm text-gray-500 mt-1">Vectorization Method</div>
+                </div>
+                <div class="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-gray-100">
+                    <div class="text-2xl font-bold text-indigo-600">Cosine</div>
+                    <div class="text-sm text-gray-500 mt-1">Similarity Metric</div>
+                </div>
+            </div>
+            
+            <!-- Results Card -->
+            <div class="glass-card rounded-2xl shadow-xl overflow-hidden animate-scale-in delay-200">
+                <div class="relative">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600"></div>
+                </div>
+                
+                <!-- Table Container -->
+                <div class="overflow-x-auto">
+                    {{ keyword | safe }}
+                </div>
+                
+                <!-- Footer Note -->
+                <div class="border-t border-gray-100 px-6 py-4 bg-gray-50/50">
+                    <div class="flex items-center gap-3 text-sm text-gray-500">
+                        <span class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">💡</span>
+                        <span>Recommendations are generated using advanced NLP algorithms analyzing customer reviews, cuisine types, and dining patterns.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Info Cards -->
+            <div class="grid md:grid-cols-3 gap-5 mt-10 animate-slide-up delay-200">
+                <div class="group bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-gray-100 hover:shadow-lg transition-all hover:-translate-y-1">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center text-lg mb-3">📝</div>
+                    <h4 class="font-bold text-gray-900 text-sm">NLP Processing</h4>
+                    <p class="text-xs text-gray-500 mt-1">TF-IDF vectorization extracts semantic meaning from reviews</p>
+                </div>
+                
+                <div class="group bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-gray-100 hover:shadow-lg transition-all hover:-translate-y-1">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-lg mb-3">🎯</div>
+                    <h4 class="font-bold text-gray-900 text-sm">Precision Matching</h4>
+                    <p class="text-xs text-gray-500 mt-1">Cosine similarity for accurate restaurant recommendations</p>
+                </div>
+                
+                <div class="group bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-gray-100 hover:shadow-lg transition-all hover:-translate-y-1">
+                    <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg flex items-center justify-center text-lg mb-3">⚡</div>
+                    <h4 class="font-bold text-gray-900 text-sm">Real-time Engine</h4>
+                    <p class="text-xs text-gray-500 mt-1">Pre-computed matrices deliver sub-100ms response</p>
+                </div>
+            </div>
+            
+        </div>
+        
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Style the pandas-generated table
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                table.classList.add('result-table');
+                
+                // Style rating and cost columns
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    cells.forEach((cell, index) => {
+                        // Check if cell contains rating (looks like number with decimal)
+                        if(cell.textContent.match(/^\d+\.\d+$/) && parseFloat(cell.textContent) <= 5) {
+                            const rating = parseFloat(cell.textContent);
+                            cell.innerHTML = `<span class="badge-rating">⭐ ${rating.toFixed(1)}</span>`;
+                        }
+                        // Check if cell contains cost (starts with ₹ or contains cost)
+                        if(cell.textContent.includes('₹') || (cell.textContent.match(/\d+/) && index === cells.length - 1)) {
+                            cell.innerHTML = `<span class="badge-cost">💰 ${cell.textContent}</span>`;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
