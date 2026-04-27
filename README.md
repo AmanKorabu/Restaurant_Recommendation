@@ -93,8 +93,8 @@ python app1.py
 ```bash
 Go to http://localhost:5000
 ```
-```bash
-📊 Dataset
+
+### 📊 Dataset
 Feature	Description
 Source	Zomato Bangalore restaurants
 Size	3,000+ restaurants
@@ -110,9 +110,9 @@ Frontend: Tailwind CSS, JavaScript
 NLP: NLTK
 📝 License
 MIT License
-```
-👨‍💻 Developer
-Aman Korabu
+
+### 👨‍💻 Developer
+### Aman Korabu
 
 <div align="center">
 ⭐ Star this repo if you find it useful! ⭐
